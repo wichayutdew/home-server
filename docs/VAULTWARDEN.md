@@ -15,6 +15,8 @@
 services:
     container_name: vaultwarden
     restart: unless-stopped
+    ports:
+      - "127.0.0.1:8000:80"
     environment:
       SIGNUPS_ALLOWED: true ## On 1st installation, enable this and signup your account then disable it to enhance security
       WEBSOCKET_ENABLED: true
@@ -22,41 +24,16 @@ services:
     volumes:
       - vw-data:/data
 
-  caddy:
-    image: caddy:2
-    container_name: caddy
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
-      - caddy_data:/data
-      - caddy_config:/config
-    depends_on:
-      - vaultwarden
-
 volumes:
   vw-data:
-  caddy_data:
-  caddy_config:
 ```
 
 3. export argon2 password hash into `/opt/vaultwarden/.env` file `ADMIN_TOKEN=<token>`
-4. create `Caddyfile` to reverse the proxy back to tailscale DNS
-
-```
-<tailscale DNS name e.g. vaultwarden.mackarel-pike.ts.net> {
-    reverse_proxy vaultwarden:80
-    tls internal
-}
-```
-
-5. Start the service using `docker compose up -d`
-6. Create vaultwarden account
-7. stop docker using `docker compose down` and update environment variable to `SIGNUPS_ALLOWED: false`
-8. restart the docker `docker compose up -d`
-
+4. Start the service using `docker compose up -d`
+5. run `tailscale serve --bg --https=443 http://127.0.0.1:8000` 
+5. Create vaultwarden account
+6. stop docker using `docker compose down` and update environment variable to `SIGNUPS_ALLOWED: false`
+7. restart the docker `docker compose up -d`
 
 ## Useful command
 
