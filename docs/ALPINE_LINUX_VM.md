@@ -19,6 +19,8 @@
         rc-update add <service> default ## Add service to auto run on boot
         rc-service <service> start      ## Start that certain service right away
         rc-status                       ## List all OpenRC setup
+        setup-apkrepos -f               ## Finding the fastest APK mirror
+        vi /etc/ssh/sshd_config (PermitRootLogin yes || prohibit-password) && service sshd restart ## Adjusting root user authentication
     ```
 
 # Reference

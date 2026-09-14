@@ -8,7 +8,7 @@
 
 ## Steps
 
-1. create vaultwarden directory `mkdir -p /opt/immich-app && cd /opt/immich-app`
+1. create directory `mkdir -p /opt/immich-app && cd /opt/immich-app`
 2. clone immich docker-compose file `wget -O docker-compose.yml https://github.com/immich-app/immich/releases/latest/download/docker-compose.yml`
 3. clone immich env file `wget -O .env https://github.com/immich-app/immich/releases/latest/download/example.env`
 4. update `.env` file

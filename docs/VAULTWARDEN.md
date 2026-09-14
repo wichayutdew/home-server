@@ -8,7 +8,7 @@
 
 ## Steps
 
-1. create vaultwarden directory `mkdir -p /opt/vaultwarden && cd /opt/vaultwarden`
+1. create directory `mkdir -p /opt/vaultwarden && cd /opt/vaultwarden`
 2. create `docker-compose.yml` to start `vaultwarden` and `caddy << a reverse proxy for vault warden`
 
 ```
