@@ -23,6 +23,13 @@ DB_PASSWORD=<Random password>
 ## Useful
 
 - to migrate from Google photos `takeout.google.com` with `immich-go`
+```
+scp <path-to-zip> root@<vm-IP>:/mnt/staging/takeout-zips/  ## Moving file over local network
+immich-go upload from-google-photos \
+  --server=http://localhost:2283 \
+  --api-key=<api-key-from-immich-portal> \
+  /mnt/staging/takeout-zips/<downloaded-filename>
+``` 
 
 ## Reference
 
