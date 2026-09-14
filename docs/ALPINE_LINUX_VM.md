@@ -9,7 +9,9 @@
 5. unmount CD/DVD from VM and run `reboot`
 6. run `apk update`
 7. Connect to Proxmox's montoring using `QEMU Guest Agent`
-8. run `apk add tailscale docker docker-cli-compose`
+8. add edge server for package download `vi /etc/apk/repositories` and add `@edge https://dl-cdn.alpinelinux.org/alpine/edge/community`
+9. run `apk add tailscale@edge docker docker-cli-compose`
+10. add [SSH auth](SSH_AUTH.md)
 
 ## Useful command
 
